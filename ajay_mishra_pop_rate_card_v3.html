@@ -1,0 +1,483 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .doc {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAFAF7;
+    color: #2C2C2A;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 0 3rem;
+  }
+
+  .header {
+    background: #1A2E1A;
+    color: #E8F0E8;
+    padding: 3rem 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 40px solid rgba(255,255,255,0.04);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 40%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 60px solid rgba(255,255,255,0.03);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .header-role {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8FAF8F;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .divider-strip {
+    background: #2D7A2D;
+    height: 5px;
+  }
+
+  .body {
+    padding: 2.5rem 3rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #2D7A2D;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #C8D8C8;
+  }
+
+  .note-banner {
+    background: #EAF3DE;
+    border-left: 3px solid #2D7A2D;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 16px;
+    font-size: 12.5px;
+    color: #27500A;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  table.rate-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    table-layout: fixed;
+    margin-bottom: 2.5rem;
+  }
+
+  table.rate-table thead tr th {
+    background: #1A2E1A;
+    color: #8FAF8F;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 11px 16px;
+    text-align: left;
+  }
+
+  table.rate-table thead tr th:first-child { border-radius: 8px 0 0 8px; width: 48px; }
+  table.rate-table thead tr th:last-child { border-radius: 0 8px 8px 0; text-align: right; width: 160px; }
+
+  table.rate-table tbody tr {
+    border-bottom: 1px solid #E8EEE8;
+    transition: background 0.15s;
+  }
+
+  table.rate-table tbody tr:hover { background: #F2F7F2; }
+
+  table.rate-table tbody tr td {
+    padding: 13px 16px;
+    vertical-align: middle;
+    color: #2C2C2A;
+  }
+
+  table.rate-table tbody tr td.sno {
+    font-weight: 500;
+    color: #888780;
+    font-size: 12px;
+    width: 48px;
+  }
+
+  table.rate-table tbody tr td.rate {
+    text-align: right;
+    font-weight: 500;
+    color: #1A2E1A;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  table.rate-table tbody tr td .sub-rate {
+    display: block;
+    font-size: 11px;
+    color: #888780;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  .extra-tag {
+    display: inline-block;
+    background: #FAEEDA;
+    color: #854F0B;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #D3D1C7;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .card-head {
+    background: #1A2E1A;
+    padding: 11px 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8FAF8F;
+    font-weight: 500;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 1px solid #EEF0EE;
+    font-size: 13px;
+  }
+
+  .spec-row:last-child { border-bottom: none; }
+  .spec-label { color: #888780; font-weight: 400; }
+  .spec-value { font-weight: 500; color: #1A2E1A; text-align: right; }
+
+  .pay-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 1px solid #EEF0EE;
+    font-size: 13px;
+  }
+
+  .pay-row:last-child { border-bottom: none; }
+  .pay-stage { color: #444441; font-weight: 400; }
+
+  .pay-pct {
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #1A2E1A;
+  }
+
+  .pay-pct.highlight { color: #2D7A2D; }
+
+  .terms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+  }
+
+  .term-item {
+    background: #fff;
+    border: 1px solid #D3D1C7;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    color: #444441;
+    line-height: 1.55;
+  }
+
+  .term-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #1A2E1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .term-icon i { color: #8FAF8F; font-size: 14px; }
+
+  .footer {
+    margin: 0 3rem;
+    border-top: 1px solid #C8D8C8;
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-quote {
+    font-style: italic;
+    font-size: 13px;
+    color: #5F5E5A;
+    line-height: 1.7;
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .footer-seal {
+    text-align: right;
+    font-size: 11px;
+    color: #5F5E5A;
+    flex-shrink: 0;
+  }
+
+  .footer-seal strong {
+    display: block;
+    font-size: 15px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: #1A2E1A;
+    margin-bottom: 2px;
+  }
+
+  .validity-pill {
+    display: inline-block;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+</style>
+
+<h2 class="sr-only">Ajay Mishra POP Works Rate List — Professional Client Document</h2>
+
+<div class="doc">
+
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="header-name">Ajay Mishra</div>
+        <div class="header-role">POP Works &nbsp;&amp;&nbsp; Material Contractor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-strip"></div>
+
+  <div class="body">
+
+    <div class="note-banner">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      &nbsp; All rates are inclusive of material cost. Rates apply to cupboard area with 2-height applicable. Valid for 6 months from the effective date.
+    </div>
+
+    <div class="section-label">Rate Schedule</div>
+
+    <table class="rate-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Description of Work</th>
+          <th style="text-align:right;">Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sno">01</td>
+          <td>
+            <strong style="font-weight:500;">G.I. Framing Only</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">Galvanised iron frame installation</span>
+          </td>
+          <td class="rate">₹ 110 <span class="sub-rate">per sq.ft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">02</td>
+          <td>
+            <strong style="font-weight:500;">Extra Thick POP Double Layer Plaster</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">With fibre mesh reinforcement</span>
+          </td>
+          <td class="rate">₹ 60 <span class="sub-rate">per sq.ft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">03</td>
+          <td>
+            <strong style="font-weight:500;">Wall Partition POP with Cross Jali<br>One Side Finish</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">Single-side POP finish with cross jali reinforcement</span>
+          </td>
+          <td class="rate" style="white-space:normal;">₹90<span class="sub-rate">per sq.ft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">04</td>
+          <td>
+            <strong style="font-weight:500;">Drawing Change – G.I. Frame</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">Design modification after framing</span>
+          </td>
+          <td class="rate">40% <span class="sub-rate">of applicable rate</span></td>
+        </tr>
+        <tr>
+          <td class="sno">05</td>
+          <td>
+            <strong style="font-weight:500;">Carpet Area</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">1 inch – 9 inch running ft</span>
+          </td>
+          <td class="rate">₹ 140 <span class="sub-rate"> 75% of Rate: ₹ 105/rft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">06</td>
+          <td>
+            <strong style="font-weight:500;">Wall POP Punning</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">Standard wall finishing coat</span>
+          </td>
+          <td class="rate">₹ 35 <span class="sub-rate">per sq.ft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">07</td>
+          <td>
+            <strong style="font-weight:500;">Groove Line / Moulding Curve Ceiling</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">1 inch groove — 12 × 6 mm deep cut</span>
+          </td>
+          <td class="rate">₹ 60 <span class="sub-rate">per running ft</span></td>
+        </tr>
+        <tr>
+          <td class="sno">08</td>
+          <td>
+            <strong style="font-weight:500;">Wall Partition – G.I. Frame</strong>
+            <span style="display:block; font-size:12px; color:#888780; margin-top:2px;">Non-standard partition walls</span>
+          </td>
+          <td class="rate">40% <span class="sub-rate">of applicable rate</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div>
+        <div class="section-label">Material Specifications</div>
+        <div class="card">
+          <div class="card-head">Materials Used</div>
+          <div class="card-body">
+            <div class="spec-row"><span class="spec-label">G.I. Main Channel</span><span class="spec-value">900 gm</span></div>
+            <div class="spec-row"><span class="spec-label">G.I. Cross Channel</span><span class="spec-value">600 gm</span></div>
+            <div class="spec-row"><span class="spec-label">Wall Angle</span><span class="spec-value">350 gm</span></div>
+            <div class="spec-row"><span class="spec-label">MS Jali</span><span class="spec-value">8 kg</span></div>
+            <div class="spec-row"><span class="spec-label">Fastener</span><span class="spec-value">6 mm Star Screw (19.8)</span></div>
+            <div class="spec-row"><span class="spec-label">Store / Brand</span><span class="spec-value">Trimurti</span></div>
+            <div class="spec-row"><span class="spec-label">Plaster Mix</span><span class="spec-value">POP + JK Plaster</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Payment Schedule</div>
+        <div class="card">
+          <div class="card-head">Stage-wise Disbursement</div>
+          <div class="card-body">
+            <div class="pay-row"><span class="pay-stage">Advance (Before Start)</span><span class="pay-pct">20%</span></div>
+            <div class="pay-row"><span class="pay-stage">G.I. Frame Complete</span><span class="pay-pct">20%</span></div>
+            <div class="pay-row"><span class="pay-stage">Jali Fixing Complete</span><span class="pay-pct">20%</span></div>
+            <div class="pay-row"><span class="pay-stage">POP Finish Complete</span><span class="pay-pct highlight">30%</span></div>
+            <div class="pay-row"><span class="pay-stage">Extra Charges (if any)</span><span class="pay-pct">40%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Terms &amp; Conditions</div>
+
+    <div class="terms-grid">
+      <div class="term-item">
+        <div class="term-icon"><i class="ti ti-eye" aria-hidden="true"></i></div>
+        <div>Owner must inspect and verify work quality every <strong>15 days</strong> during the project.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-icon"><i class="ti ti-home" aria-hidden="true"></i></div>
+        <div>Labour accommodation and water storage arrangements are the <strong>owner's responsibility</strong>.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-icon"><i class="ti ti-receipt" aria-hidden="true"></i></div>
+        <div>All rates are <strong>inclusive of material</strong> and valid for <strong>6 months</strong> from the effective date.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-icon"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div>
+        <div>Any structural or design change after G.I. framing will attract an additional <strong>40% charge</strong>.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-quote">
+      "ईमानदार व्यक्ति स्वयं से, स्वयं भी संतुष्ट रहता है तथा दूसरे भी उससे संतुष्ट रहते हैं।"
+    </div>
+    <div class="footer-seal">
+      <strong>Ajay Mishra</strong>
+      POP Works &amp; Material Contractor
+      <div class="validity-pill">Rates valid for 6 months</div>
+    </div>
+  </div>
+
+</div>
